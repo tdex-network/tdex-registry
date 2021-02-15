@@ -20,7 +20,7 @@ Before submitting yout endpoint, be sure to test with any tdex clients, such as 
 
 ### 2. Submit
 
-To add your provider to the list, [open an issue](https://github.com/TDex-network/tdex-registry/issues/new?assignees=&labels=provider+request&template=provider-request.md)
+To add your provider to the list, [open an issue](https://github.com/TDex-network/tdex-registry/issues/new?assignees=&labels=provider+request&template=provider-request.md&title=Add+%7BNAME%7D)
 
 ### 3. Availability
 
@@ -29,4 +29,4 @@ We automatically check your provider every 12 hours: we call the `Markets` servi
 
 # JSON SCHEMA
 
-The `tdex-registry` is a simple public reachable file that follows the [JSON SCHEMA](https://json-schema.org) specification. Anyone is welcome to create his own registry and source to tdex clients directly.
+The `tdex-registry` is a simple public reachable file that follows the [JSON SCHEMA](https://json-schema.org) specification. Anyone is welcome to create a custom registry and source to tdex clients directly.

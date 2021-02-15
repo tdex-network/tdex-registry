@@ -18,8 +18,5 @@ assignees: ''
 ## Name (max 40 characters)
 My Awesome Provider
 
-## Endpoint (host:name)
+## Endpoint (valid uri with protocol://hostname:port)
 provider.tdex.network:9945
-
-## Transport (one between `insecure`, `onion`, `TLS`, `mTLS`)
-TLS
