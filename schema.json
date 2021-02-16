@@ -1,0 +1,21 @@
+{
+  "$id": "https://raw.githubusercontent.com/TDex-network/tdex-registry/master/schema.json",
+  "description": "A public list of TDex Liquidity Providers",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "The tdex liquidity provider name",
+        "minLength": 1,
+        "maxLength": 40
+      },
+      "endpoint": {
+        "type": "string",
+        "description": "The provider endpoint",
+        "format": "uri"
+      }
+    }
+  }
+}
