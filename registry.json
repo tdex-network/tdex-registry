@@ -2,5 +2,9 @@
   {
     "name": "TDex Developers Daemon",
     "endpoint": "https://provider.tdex.network:9945"
+  }, 
+  {
+    "name": "TDex Developers Onion Daemon",
+    "endpoint": "http://rp2ci5j25p3vmly45eg2micik7dl3ei7lvr2naiotbvg66gzn7yegpqd.onion:80"
   }
 ]
