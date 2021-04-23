@@ -20,11 +20,20 @@ Before submitting yout endpoint, be sure to test with any tdex clients, such as 
 
 ### 2. Submit
 
-To add your provider to the list, [open an issue](https://github.com/TDex-network/tdex-registry/issues/new?assignees=&labels=provider+request&template=provider-request.md&title=Add+%7BNAME%7D)
+To add your provider to the list, first fork the repository and [open a pull request](https://github.com/TDex-network/tdex-registry/pulls) adding your provider in the `registry.json` file at the end of the array.
+
+```json
+[
+  {
+    "name": "My Awesome Exchange",
+    "endpoint": "https://my.provider.com:9945"
+  }
+]
+```
 
 ### 3. Availability
 
-We automatically check your provider every 12 hours: we call the `Markets` service endpoint looking for succesful reply and a **non-empty array** of markets. 
+We automatically check your provider: we call the `Markets` service endpoint looking for succesful reply and a **non-empty array** of markets. 
 
 
 # JSON SCHEMA
