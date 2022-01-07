@@ -1,18 +1,6 @@
 [
   {
-    "name": "TDex Developers Daemon",
-    "endpoint": "https://provider.tdex.network:9945"
-  },
-  {
-    "name": "Tdex_LCAD",
-    "endpoint": "http://d7y3mzol3eo2tneqw5oytj23knm3734npwml4jzazrzzpy32e56lrxqd.onion:80"
-  },
-  {
-    "name": "rg36ges56",
-    "endpoint": "http://btuiucyiumvdzhlnhqbnj6k5yrbwo2dlznzosicwnf6nw5aewr77elyd.onion:80"
-  },
-  {
-    "name": "ONLYBESTOFFERS.TRADE",
-    "endpoint": "http://onlybestyqgaaloz2azrefzu6kkrtakrh324ana2fqfrzpves2rgsqyd.onion:9945"
+    "name": "Testnet dev daemon",
+    "endpoint": "https://provider.tdex.network:19945"
   }
 ]
