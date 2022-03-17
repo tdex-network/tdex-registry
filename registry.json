@@ -2,5 +2,9 @@
   {
     "name": "Testnet dev daemon",
     "endpoint": "https://provider.tdex.network:19945"
+  },
+  {
+    "name": "Stephane provider",
+    "endpoint": "https://provider.tdex.network:29945"
   }
 ]
