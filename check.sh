@@ -29,13 +29,10 @@ for endpoint in $endpoints; do
 
     # Use the gh pr list --search command to search for open PRs with the given title
     gh config set pager cat
-    gh pr list --search "$title" --state open | grep "no pull requests match your search"
-
-    # Save the exit status of the gh command in a variable
-    result=$?
+    result=`gh pr list --search "$title" --state open`
 
     # Check the exit status of the gh command and take different actions depending on the result
-    if [ $result -ne 0 ]; then
+    if [[ $result == *"no pull requests match your search"* ]]; then
       # Use jq to delete the corresponding item from the registry.json file
       cat registry.json | jq "del(.[] | select(.endpoint == \"$endpoint\"))" > new_registry.json
       mv new_registry.json registry.json
