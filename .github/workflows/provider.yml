@@ -31,6 +31,14 @@ jobs:
           sleep 10
           
       - name: Call all the Markets endpoints with JSON HTTP client and delete the non responsive ones
-        run: bash check.sh
+        run: |
+          # Set the current GITHUB_ACTOR as the git user
+          git config --global user.name "$GITHUB_ACTOR"
+          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+          bash check.sh
+
+          # Push the changes to the remote repository
+          git push origin master
 
 

@@ -34,6 +34,3 @@ for endpoint in $endpoints; do
     git commit -m "$message"
   fi
 done
-
-# Push the changes to the remote repository
-git push origin master
