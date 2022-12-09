@@ -18,7 +18,7 @@ curl -w "%{http_code}" -o /dev/null -s -X POST <endpoint>/v1/markets \
   --data-raw '{}'
 ```
 
-** For Tor hidden services, run a Tor Browser and add the `--socks5-hostname` flag to the command:**
+**For Tor hidden services, run a Tor Browser and add the `--socks5-hostname` flag to the command:**
 
 ```sh
 curl -w "%{http_code}" -o /dev/null -s -X POST <endpoint>/v1/markets \
