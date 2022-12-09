@@ -4,10 +4,6 @@
     "endpoint": "https://provider.tdex.network:9945"
   },
   {
-    "name": "Tdex_LCAD",
-    "endpoint": "http://d7y3mzol3eo2tneqw5oytj23knm3734npwml4jzazrzzpy32e56lrxqd.onion:80"
-  },
-  {
     "name": "ONLYBESTOFFERS.TRADE",
     "endpoint": "http://onlybestyqgaaloz2azrefzu6kkrtakrh324ana2fqfrzpves2rgsqyd.onion:9945"
   },
