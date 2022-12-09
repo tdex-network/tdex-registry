@@ -30,18 +30,9 @@ jobs:
           docker run -d --network host --name=tor -v `pwd`/tor:/etc/tor connectical/tor
           sleep 10
 
-      # Set the current GITHUB_ACTOR as the git user  
-      - name: configure git user
-        run: |
-          git config --global user.name "$GITHUB_ACTOR"
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
-      - name: Call all the Markets endpoints with JSON HTTP client and delete the non responsive ones
+      - name: Check all endpoints reachability with JSON HTTP client
         run: bash check.sh
-      
-      # Push the changes to the remote repository
-      - name: Commit changes
-        run: git push origin master
-  
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
