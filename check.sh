@@ -23,9 +23,43 @@ for endpoint in $endpoints; do
 
   # Check the status code of the POST request
   if [ "$status_code" != "200" ]; then
-    # body 
-    title="Automated: $endpoint not reachable"
-    body="Please check the endpoint **${endpoint}**\nStatus code: ${status_code}\n"
-    gh issue create --title "$title" --body "$body"
+    # Use jq to delete the corresponding item from the registry.json file
+    cat registry.json | jq "del(.[] | select(.endpoint == \"$endpoint\"))" > new_registry.json
+    mv new_registry.json registry.json
+
+    # create a branch
+    branch_name="delete-$RANDOM"
+    git checkout -b "$branch_name" 
+    # Add the updated registry.json file to the Git index
+    git add registry.json
+
+    # Commit the changes with a message
+    message="Deleted endpoint $endpoint from registry.json"
+    git commit -m "$message"
+
+    # push the branch to the remote repository
+    git push -u origin "$branch_name"
+
+    title="$endpoint not reachable"
+    body="Please check the endpoint **${endpoint}** it may not be reachable anymore.
+    Status code: ${status_code}
+
+    ## How to check
+
+    > You need Tor Browser to check onion endpoints. You can download it from [here](https://www.torproject.org/download/).
+    ```bash
+    curl -w "%{http_code}" -o /dev/null -s -X POST $endpoint/v1/markets \
+      --socks5-hostname 'localhost:9150' \
+      --header 'Content-Type: application/json' \
+      --data-raw '{}'
+    ```
+    
+    If you approve the pull request, the endpoint will be removed from the registry."
+    
+    # create a pull request
+    gh pr create --base master --title "$title" --body "$body" 
+
+    # checkout the master branch
+    git checkout master
   fi
 done
