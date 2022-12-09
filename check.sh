@@ -1,4 +1,5 @@
-#!/usr/bin/env bash# Parse the registry.json file and extract the list of server endpoints
+#!/usr/bin/env bash
+# Parse the registry.json file and extract the list of server endpoints
 endpoints=$(cat registry.json | jq -c -r '.[].endpoint')
 
 # Loop through each endpoint
@@ -22,15 +23,22 @@ for endpoint in $endpoints; do
 
   # Check the status code of the POST request
   if [ "$status_code" != "200" ]; then
-    # Use jq to delete the corresponding item from the registry.json file
-    cat registry.json | jq "del(.[] | select(.endpoint == \"$endpoint\"))" > new_registry.json
-    mv new_registry.json registry.json
-
-    # Add the updated registry.json file to the Git index
-    git add registry.json
-
-    # Commit the changes with a message
-    message="Deleted endpoint $endpoint from registry.json"
-    git commit -m "$message"
+    # body 
+    title="Automated: $endpoint not reachable"
+    curl -u $GITHUB_ACTOR:$GITHUB_TOKEN \
+      https://api.github.com/repos/tdex-network/tdex-registry/issues \
+      -d '{
+        "title": "${title}", 
+        "body": "Please check the endpoint **${endpoint}**\n
+        Status code: ${status_code}\n\n
+        ## How to check (be sure to have Tor Browser running)\n
+        ```sh\n
+          curl -w "%{http_code}" -o /dev/null -s -X POST $endpoint/v1/markets \\n
+              --socks5-hostname 'localhost:9150' \\n
+              --header 'Content-Type: application/json' \\n
+              --data-raw '{}'\n
+        ```\n
+        "
+      }'
   fi
 done
