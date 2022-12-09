@@ -1,13 +1,8 @@
-# This is a basic workflow to help you get started with Actions
+name: Test providers
 
-name: Test provider
-
-# Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push 
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -35,26 +30,7 @@ jobs:
           docker run -d --network host --name=tor -v `pwd`/tor:/etc/tor connectical/tor
           sleep 10
           
-       # Download the grpcurl
-      - name: install grpcurl 1.8.0-socks5 fork
-        run: |
-          wget -c https://github.com/tiero/grpcurl/releases/download/v1.8.0-socks5/grpcurl_1.8.0-socks5_linux_x86_64.tar.gz -O - | tar -xz
-
-      # Download the proto
-      - name: Download the proto files
-        run: |
-          wget https://raw.githubusercontent.com/TDex-network/tdex-protobuf/beta/{types,swap,trade}.proto
-          
-      - name: Call all the Markets endpoint
-        run: |
-          for endpoint in $(cat registry.json | jq -c -r '.[].endpoint'); do
-            endpoint_without_schema=$(echo ${endpoint} | grep -oP '(http|https)://\K\S+')
-            onion='.onion'
-            if [[ "$endpoint_without_schema" =~ .*"$onion".* ]]; then
-              ./grpcurl -plaintext -proto trade.proto $endpoint_without_schema Trade.Markets
-            else
-              ./grpcurl -proto trade.proto $endpoint_without_schema Trade.Markets
-            fi
-          done
+      - name: Call all the Markets endpoints with JSON HTTP client and delete the non responsive ones
+        run: bash check.sh
 
 
