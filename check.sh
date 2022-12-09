@@ -43,16 +43,6 @@ for endpoint in $endpoints; do
     title="$endpoint not reachable"
     body="Please check the endpoint **${endpoint}** it may not be reachable anymore.
     Status code: ${status_code}
-
-    ## How to check
-
-    > You need Tor Browser to check onion endpoints. You can download it from [here](https://www.torproject.org/download/).
-    ```bash
-    curl -w "%{http_code}" -o /dev/null -s -X POST $endpoint/v1/markets \
-      --socks5-hostname 'localhost:9150' \
-      --header 'Content-Type: application/json' \
-      --data-raw '{}'
-    ```
     
     If you approve the pull request, the endpoint will be removed from the registry."
     
