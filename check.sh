@@ -25,20 +25,7 @@ for endpoint in $endpoints; do
   if [ "$status_code" != "200" ]; then
     # body 
     title="Automated: $endpoint not reachable"
-    curl -u $GITHUB_ACTOR:$GITHUB_TOKEN \
-      https://api.github.com/repos/tdex-network/tdex-registry/issues \
-      -d '{
-        "title": "${title}", 
-        "body": "Please check the endpoint **${endpoint}**\n
-        Status code: ${status_code}\n\n
-        ## How to check (be sure to have Tor Browser running)\n
-        ```sh\n
-          curl -w "%{http_code}" -o /dev/null -s -X POST $endpoint/v1/markets \\n
-              --socks5-hostname 'localhost:9150' \\n
-              --header 'Content-Type: application/json' \\n
-              --data-raw '{}'\n
-        ```\n
-        "
-      }'
+    body="Please check the endpoint **${endpoint}**\nStatus code: ${status_code}\n"
+    gh issue create --title "$title" --body "$body"
   fi
 done
