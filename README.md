@@ -17,6 +17,24 @@ Before submitting yout endpoint, be sure to test with any tdex clients, such as 
 
 * With the app goes to `Settings` > `Manage Liquidity Provider` > `Connect`
 * With the cli use `tdex-cli connect <your_endpoint>`
+* With the command-line use the following curl command(s):
+
+**Replace endpoint with your actual public reachable endpoint, comprhensive of http or https.**
+
+```sh
+curl -w "%{http_code}" -o /dev/null -s -X POST <endpoint>/v1/markets \
+  --header 'Content-Type: application/json' \
+  --data-raw '{}'
+```
+
+**For Tor hidden services, run a Tor Browser and add the `--socks5-hostname` flag to the command:**
+
+```sh
+curl -w "%{http_code}" -o /dev/null -s -X POST <endpoint>/v1/markets \
+  --header 'Content-Type: application/json' \
+  --data-raw '{}' \
+  --socks5-hostname localhost:9150
+```
 
 ### 2. Submit
 
