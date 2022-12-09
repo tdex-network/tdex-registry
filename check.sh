@@ -23,33 +23,45 @@ for endpoint in $endpoints; do
 
   # Check the status code of the POST request
   if [ "$status_code" != "200" ]; then
-    # Use jq to delete the corresponding item from the registry.json file
-    cat registry.json | jq "del(.[] | select(.endpoint == \"$endpoint\"))" > new_registry.json
-    mv new_registry.json registry.json
-
-    # create a branch
-    branch_name="delete-$RANDOM"
-    git checkout -b "$branch_name" 
-    # Add the updated registry.json file to the Git index
-    git add registry.json
-
-    # Commit the changes with a message
-    message="Deleted endpoint $endpoint from registry.json"
-    git commit -m "$message"
-
-    # push the branch to the remote repository
-    git push -u origin "$branch_name"
-
-    title="$endpoint not reachable"
-    body="Please check the endpoint **${endpoint}** it may not be reachable anymore.
-    Status code: ${status_code}
     
-    If you approve the pull request, the endpoint will be removed from the registry."
-    
-    # create a pull request
-    gh pr create --base master --title "$title" --body "$body" 
+    # Set the title to search for
+    title="remove $endpoint"
 
-    # checkout the master branch
-    git checkout master
+    # Use the gh pr list --search command to search for open PRs with the given title
+    gh config set pager cat
+    gh pr list --search "$title" --state open | grep "no pull requests match your search"
+
+    # Save the exit status of the gh command in a variable
+    result=$?
+
+    # Check the exit status of the gh command and take different actions depending on the result
+    if [ $result -ne 0 ]; then
+      # Use jq to delete the corresponding item from the registry.json file
+      cat registry.json | jq "del(.[] | select(.endpoint == \"$endpoint\"))" > new_registry.json
+      mv new_registry.json registry.json
+
+      # create a branch
+      branch_name="delete-$RANDOM"
+      git checkout -b "$branch_name" 
+      # Add the updated registry.json file to the Git index
+      git add registry.json
+
+      # Commit the changes with a message
+      message="Deleted endpoint $endpoint from registry.json"
+      git commit -m "$message"
+
+      # push the branch to the remote repository
+      git push -u origin "$branch_name"
+
+      body="Please check the endpoint **${endpoint}** it may not be reachable anymore.
+      Status code: ${status_code}
+      If you approve the pull request, the endpoint will be removed from the registry."
+
+      # create a pull request
+      gh pr create --base master --title "$title" --body "$body" 
+
+      # checkout the master branch
+      git checkout master
+    fi
   fi
 done
