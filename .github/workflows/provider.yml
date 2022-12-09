@@ -29,16 +29,19 @@ jobs:
           mkdir -p tor && sudo echo "SOCKSPort 0.0.0.0:9150" > ./tor/torrc
           docker run -d --network host --name=tor -v `pwd`/tor:/etc/tor connectical/tor
           sleep 10
-          
-      - name: Call all the Markets endpoints with JSON HTTP client and delete the non responsive ones
+
+      # Set the current GITHUB_ACTOR as the git user  
+      - name: configure git user
         run: |
-          # Set the current GITHUB_ACTOR as the git user
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-          bash check.sh
-
-          # Push the changes to the remote repository
-          git push origin master
+      - name: Call all the Markets endpoints with JSON HTTP client and delete the non responsive ones
+        run: bash check.sh
+      
+      # Push the changes to the remote repository
+      - name: Commit changes
+        run: git push origin master
+  
 
 
