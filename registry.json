@@ -18,5 +18,9 @@
   {
     "name": "archer",
     "endpoint": "http://ua2kl5y3ffsh267sx7j4q57yug47rcnrw3vpasqjvcsysfcuqmklb2qd.onion:9945"
+  },
+  {
+    "name": "bfree",
+    "endpoint": "https://tdex.bfree.top:443"
   }
 ]
