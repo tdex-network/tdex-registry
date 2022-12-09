@@ -1,13 +1,8 @@
-# This is a basic workflow to help you get started with Actions
+name: Test providers
 
-name: Test provider
-
-# Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push 
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -35,19 +30,7 @@ jobs:
           docker run -d --network host --name=tor -v `pwd`/tor:/etc/tor connectical/tor
           sleep 10
           
-      - name: Call all the Markets endpoints with JSON HTTP client
-        run: |
-          for endpoint in $(cat registry.json | jq -c -r '.[].endpoint'); do
-            onion='.onion'
-            if [[ "$endpoint" =~ .*"$onion".* ]]; then
-              curl --request POST $endpoint/v1/markets \
-              --socks5-hostname 'localhost:9150' \
-              --header 'Content-Type: application/json' \
-              --data-raw '{}'
-            else
-              curl --request POST $endpoint/v1/markets \
-              --header 'Content-Type: application/json' \
-              --data-raw '{}'
-            fi
-          done
+      - name: Call all the Markets endpoints with JSON HTTP client and delete the non responsive ones
+        run: bash check.sh
+
 
