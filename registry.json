@@ -4,10 +4,6 @@
     "endpoint": "https://provider.tdex.network:9945"
   },
   {
-    "name": "Tdex_LCAD",
-    "endpoint": "http://d7y3mzol3eo2tneqw5oytj23knm3734npwml4jzazrzzpy32e56lrxqd.onion:80"
-  },
-  {
     "name": "archer",
     "endpoint": "http://ua2kl5y3ffsh267sx7j4q57yug47rcnrw3vpasqjvcsysfcuqmklb2qd.onion:9945"
   }
