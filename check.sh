@@ -23,9 +23,19 @@ for endpoint in $endpoints; do
 
   # Check the status code of the POST request
   if [ "$status_code" != "200" ]; then
-    # body 
-    title="Automated: $endpoint not reachable"
-    body="Please check the endpoint **${endpoint}**\nStatus code: ${status_code}\n"
-    gh issue create --title "$title" --body "$body"
+    # Use jq to delete the corresponding item from the registry.json file
+    cat registry.json | jq "del(.[] | select(.endpoint == \"$endpoint\"))" > new_registry.json
+    mv new_registry.json registry.json
+
+    # Add the updated registry.json file to the Git index
+    git add registry.json
+
+    # Commit the changes with a message
+    message="Deleted endpoint $endpoint from registry.json"
+    git commit -m "$message"
+
+    title="[check] $endpoint not reachable"
+    body="Please check the endpoint **${endpoint} it may not be reachable anymore.**\nStatus code: ${status_code}\n\nIf you approve the pull request, the endpoint will be removed from the registry."
+    gh pr create --base master --title "$title" --body "$body" 
   fi
 done
