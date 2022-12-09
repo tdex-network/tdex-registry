@@ -30,6 +30,11 @@ jobs:
           docker run -d --network host --name=tor -v `pwd`/tor:/etc/tor connectical/tor
           sleep 10
 
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
       - name: Check all endpoints reachability with JSON HTTP client
         run: bash check.sh
         env:
