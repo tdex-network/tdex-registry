@@ -6,5 +6,9 @@
   {
     "name": "Stephane provider",
     "endpoint": "https://provider.tdex.network:29945"
+  },
+  {
+    "name": "demo",
+    "endpoint": "https://demo-tdex.sevenlabs.ninja:443"
   }
 ]
