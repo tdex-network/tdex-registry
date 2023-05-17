@@ -22,5 +22,9 @@
   {
     "name": "bfree",
     "endpoint": "https://tdex.bfree.top:443"
+  },
+  {
+    "name": "Tdex_VEUR",
+    "endpoint": "https://old-provider.xdex.ch:443"
   }
 ]
