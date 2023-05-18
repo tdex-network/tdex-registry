@@ -26,5 +26,9 @@
   {
     "name": "Tdex_VEUR",
     "endpoint": "https://old-provider.xdex.ch:443"
+  },
+  {
+    "name": "eldamar",
+    "endpoint": "https://tdex.eldamar.icu:443"
   }
 ]
