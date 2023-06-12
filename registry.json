@@ -30,5 +30,9 @@
   {
     "name": "eldamar",
     "endpoint": "https://tdex.eldamar.icu:443"
+  },
+  {
+    "name": "KLOM",
+    "endpoint": "http://glkdiwu6fbj7ulb7olnt2i43ikyh2fqjndyyf6a46dhzrqype3nhagad.onion:9945"
   }
 ]
