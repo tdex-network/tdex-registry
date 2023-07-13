@@ -1,7 +1,7 @@
 [
   {
     "name": "Testnet dev daemon",
-    "endpoint": "https://provider.tdex.network:19945"
+    "endpoint": "https://provider-testnet.tdex.network"
   },
   {
     "name": "Stephane provider",
