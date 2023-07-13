@@ -5,7 +5,7 @@
   },
   {
     "name": "Stephane provider",
-    "endpoint": "https://provider.tdex.network:29945"
+    "endpoint": "https://provider-testnet2.tdex.network"
   },
   {
     "name": "demo",
