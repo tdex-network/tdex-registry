@@ -1,7 +1,7 @@
 [
   {
     "name": "TDex Developers Daemon",
-    "endpoint": "https://provider.tdex.network:9945"
+    "endpoint": "https://provider.tdex.network:443"
   },
   {
     "name": "Tdex_LCAD",
