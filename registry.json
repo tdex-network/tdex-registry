@@ -20,10 +20,6 @@
     "endpoint": "http://ua2kl5y3ffsh267sx7j4q57yug47rcnrw3vpasqjvcsysfcuqmklb2qd.onion:9945"
   },
   {
-    "name": "bfree",
-    "endpoint": "https://tdex.bfree.top:443"
-  },
-  {
     "name": "Tdex_VEUR",
     "endpoint": "https://old-provider.xdex.ch:443"
   },
@@ -34,5 +30,9 @@
   {
     "name": "KLOM",
     "endpoint": "http://glkdiwu6fbj7ulb7olnt2i43ikyh2fqjndyyf6a46dhzrqype3nhagad.onion:9945"
-  }
+  },
+  {
+    "name": "Tdex_USDT",
+    "endpoint": "http://btuiucyiumvdzhlnhqbnj6k5yrbwo2dlznzosicwnf6nw5aewr77elyd.onion:80"
+  },
 ]
