@@ -10,5 +10,9 @@
   {
     "name": "demo",
     "endpoint": "https://demo-tdex.sevenlabs.ninja:443"
+  },
+  {
+    "name": "Another dev daemon",
+    "endpoint": "https://v1.provider.tdex.network"
   }
 ]
