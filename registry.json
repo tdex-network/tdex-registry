@@ -1,5 +1,9 @@
 [
   {
+    "name": "Tdex_DEPIX",
+    "endpoint": "http://dyki2gt6yno6g32hzpsclxtqhdl4jyebl36oiu2u2r5wgqwzmykigoqd.onion:80"
+  },
+  {
     "name": "Tdex_LCAD",
     "endpoint": "http://d7y3mzol3eo2tneqw5oytj23knm3734npwml4jzazrzzpy32e56lrxqd.onion:80"
   },
