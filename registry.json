@@ -1,18 +1,6 @@
 [
   {
-    "name": "Testnet dev daemon",
-    "endpoint": "https://provider-testnet.tdex.network"
-  },
-  {
-    "name": "Stephane provider",
-    "endpoint": "https://provider-testnet2.tdex.network"
-  },
-  {
-    "name": "demo",
-    "endpoint": "https://demo-tdex.sevenlabs.ninja:443"
-  },
-  {
-    "name": "Another dev daemon",
-    "endpoint": "https://v1.provider.tdex.network"
+    "name": "SwapMarket.online",
+    "endpoint": "https://tdex.swapmarket.online"
   }
 ]
