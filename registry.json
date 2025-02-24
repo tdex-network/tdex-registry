@@ -2,5 +2,9 @@
   {
     "name": "SwapMarket.online",
     "endpoint": "https://tdex.swapmarket.online"
+  },
+  {
+    "name": "Test_Provider",
+    "endpoint": "http://172.161.100.170:9946"
   }
 ]
