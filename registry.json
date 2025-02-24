@@ -18,5 +18,9 @@
   {
     "name": "Tdex_USDT",
     "endpoint": "http://btuiucyiumvdzhlnhqbnj6k5yrbwo2dlznzosicwnf6nw5aewr77elyd.onion:80"
+  },
+  {
+    "name": "Test_Provider",
+    "endpoint": "http://172.161.100.170:9945"
   }
 ]
