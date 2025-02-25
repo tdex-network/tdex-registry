@@ -1,7 +1,7 @@
 [
   {
     "name": "SwapMarket.online",
-    "endpoint": "https://tdex.swapmarket.online"
+    "endpoint": "https://test.swapmarket.online"
   },
   {
     "name": "Test_Provider",
