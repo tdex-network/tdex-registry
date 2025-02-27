@@ -22,5 +22,9 @@
   {
     "name": "Test_Provider",
     "endpoint": "http://172.161.100.170:9945"
+  },
+  {
+    "name": "SwapMarket",
+    "endpoint": "https://api.swapmarket.online"
   }
 ]
